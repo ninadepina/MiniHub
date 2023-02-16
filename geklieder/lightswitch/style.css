@@ -1,0 +1,279 @@
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-interface-light: #70809d;
+	--color-interface-dark: #222630;
+
+	--color-primary: #eb5d2d;
+	--color-primary-dark: #d05329;
+	--color-secondary: #20b6b4;
+	--color-secondary-dark: #1b9c9a;
+	--color-tertiary: #e1e3ef;
+	--color-tertiary-dark: #d2d4df;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+}
+body:has(label[for='lightSwitchOne'] input[type='checkbox']:checked) {
+	background-color: #eb5d2d;
+}
+body:has(label[for='lightSwitchTwo'] input[type='checkbox']:checked) {
+	background-color: #20b6b4;
+}
+body:has(label[for='lightSwitchThree'] input[type='checkbox']:checked) {
+	background-color: #d2d4df;
+}
+body:has(label[for='lightSwitchOne'] input[type='checkbox']:checked):has(label[for='lightSwitchTwo'] input[type='checkbox']:checked) {
+	background-color: #868A71;
+}
+body:has(label[for='lightSwitchOne'] input[type='checkbox']:checked):has(label[for='lightSwitchThree'] input[type='checkbox']:checked) {
+	background-color: #DF9986;
+}
+body:has(label[for='lightSwitchTwo'] input[type='checkbox']:checked):has(label[for='lightSwitchThree'] input[type='checkbox']:checked) {
+	background-color: #79C5CA;
+}
+body:has(label[for='lightSwitchOne'] input[type='checkbox']:checked):has(label[for='lightSwitchTwo'] input[type='checkbox']:checked):has(label[for='lightSwitchThree'] input[type='checkbox']:checked) {
+	background-color: #9fa295;
+}
+
+
+label {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	transform: scale3d(0.5, 0.5, 0.5);
+}
+input {
+	position: absolute;
+}
+
+input[type='checkbox']:checked + .cover .switch_top {
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1), inset 0 0 12px rgba(0, 0, 0, 0.05);
+}
+input[type='checkbox']:checked + .cover .switch_top-outset {
+	height: 0;
+}
+input[type='checkbox']:checked + .cover .switch_bottom-outset {
+	height: 10px;
+}
+input[type='checkbox']:checked + .cover .switch_shadow.top {
+	left: -90px;
+	filter: blur(0px);
+	opacity: 0.5;
+	transform: rotate(0deg);
+}
+input[type='checkbox']:checked + .cover .switch_shadow.bottom {
+	left: -70px;
+	filter: blur(10px);
+	opacity: 1;
+	transform: rotate(-20deg);
+}
+
+label[for='lightSwitchOne'] input[type='checkbox']:checked + .cover .switch_bottom {
+	background-color: var(--color-primary-dark);
+}
+label[for='lightSwitchTwo'] input[type='checkbox']:checked + .cover .switch_bottom {
+	background-color: var(--color-secondary-dark);
+}
+label[for='lightSwitchThree'] input[type='checkbox']:checked + .cover .switch_bottom {
+	background-color: var(--color-tertiary-dark);
+}
+label[for='lightSwitchOne'] input[type='checkbox']:checked + .cover .switch_top {
+	background-color: var(--color-primary);
+}
+label[for='lightSwitchTwo'] input[type='checkbox']:checked + .cover .switch_top {
+	background-color: var(--color-secondary);
+}
+label[for='lightSwitchThree'] input[type='checkbox']:checked + .cover .switch_top {
+	background-color: var(--color-tertiary);
+}
+
+.cover {
+	background-color: var(--color-interface-dark);
+	border-radius: 4px;
+	box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.1), inset 4px 4px 8px rgba(255, 255, 255, 0.1),
+		inset 2px 2px 2px rgba(177, 177, 177, 0.1), -4px -4px 16px rgba(255, 255, 255, 0.1),
+		1px 1px 1px rgba(0, 0, 0, 0.1), 4px 4px 2px rgba(0, 0, 0, 0.05), 6px 6px 4px rgba(0, 0, 0, 0.05);
+	height: 420px;
+	position: relative;
+	width: 240px;
+}
+
+.groove {
+	border-radius: 6px;
+	height: 240px;
+	left: 50%;
+	padding: 2px;
+	position: absolute;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 120px;
+	perspective: 1000px;
+}
+
+.switch {
+	/* background-color: red; */
+	border-radius: 3px;
+
+	cursor: pointer;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	transform-style: preserve-3d;
+	transform: rotateX(-14deg);
+	transition: 0.4s ease-out;
+}
+
+.switch_top {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05), inset 0 0 24px rgba(0, 0, 0, 0.025),
+		inset -16px -16px 36px rgba(0, 0, 0, 0.1);
+	height: 50%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	transition: background 0.25s ease, box-shadow 0.25s ease;
+	width: 100%;
+	z-index: 2;
+}
+.switch_top-outset {
+	height: 10px;
+	transition: height 0.25s ease;
+}
+.switch_bottom {
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1), inset 0 0 12px rgba(0, 0, 0, 0.05);
+	height: 50%;
+	left: 0;
+	position: absolute;
+	top: 50%;
+	transition: background 0.25s ease, box-shadow 0.25s ease;
+	width: 100%;
+	z-index: 2;
+}
+.switch_bottom-outset {
+	bottom: 0;
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1), inset 0 0 12px rgba(0, 0, 0, 0.05);
+	height: 0px;
+	position: absolute;
+	transition: height 0.25s ease;
+	width: 100%;
+}
+.switch_shadow-box {
+	height: 208px;
+	left: 104px;
+	overflow: hidden;
+	position: absolute;
+	width: 100px;
+	z-index: 1;
+}
+.switch_shadow-box.top {
+	top: -96px;
+}
+.switch_shadow-box.bottom {
+	top: 20px;
+}
+.switch_shadow {
+	background-color: #10121656;
+	height: 90px;
+	position: absolute;
+	transition: left 0.25s ease, filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+	width: 90px;
+}
+.switch_shadow.top {
+	bottom: 20px;
+	filter: blur(10px);
+	left: -70px;
+	opacity: 1;
+	transform: rotate(20deg);
+}
+.switch_shadow.bottom {
+	bottom: 0;
+	left: -90px;
+	filter: blur(0px);
+	opacity: 0.5;
+	transform: rotate(0deg);
+}
+
+input[type='checkbox']:checked + .cover .switch {
+	transform: rotateX(14deg);
+	transition: 0.4s ease-out;
+}
+
+label[for='lightSwitchOne'] .groove {
+	background-color: var(--color-primary);
+}
+label[for='lightSwitchOne'] .switch {
+	border: 1px solid var(--color-primary-dark);
+	box-shadow: 0 0 2px var(--color-primary), -2px -2px 2px var(--color-primary);
+}
+label[for='lightSwitchOne'] .switch_top {
+	background-color: var(--color-primary-dark);
+}
+label[for='lightSwitchOne'] .switch_top-outset {
+	background-color: var(--color-primary);
+	background-image: linear-gradient(90deg, var(--color-primary) 0%, #d45227 100%);
+}
+label[for='lightSwitchOne'] .switch_bottom {
+	background-color: var(--color-primary);
+}
+label[for='lightSwitchOne'] .switch_bottom-outset {
+	background-color: var(--color-primary-dark);
+	background-image: linear-gradient(90deg, var(--color-primary-dark) 0%, #ba4620 100%);
+}
+
+label[for='lightSwitchTwo'] .groove {
+	background-color: var(--color-secondary);
+}
+label[for='lightSwitchTwo'] .switch {
+	border: 1px solid var(--color-secondary-dark);
+	box-shadow: 0 0 2px var(--color-secondary), -2px -2px 2px var(--color-secondary);
+}
+label[for='lightSwitchTwo'] .switch_top {
+	background-color: var(--color-secondary-dark);
+}
+label[for='lightSwitchTwo'] .switch_top-outset {
+	background-color: var(--color-secondary);
+	background-image: linear-gradient(90deg, var(--color-secondary) 0%, #1c9b98 100%);
+}
+label[for='lightSwitchTwo'] .switch_bottom {
+	background-color: var(--color-secondary);
+}
+label[for='lightSwitchTwo'] .switch_bottom-outset {
+	background-color: var(--color-secondary-dark);
+	background-image: linear-gradient(90deg, var(--color-secondary-dark) 0%, #1c9b98 100%);
+}
+
+label[for='lightSwitchThree'] .groove {
+	background-color: var(--color-tertiary);
+}
+label[for='lightSwitchThree'] .switch {
+	border: 1px solid var(--color-tertiary-dark);
+	box-shadow: 0 0 2px var(--color-tertiary-dark), -2px -2px 2px var(--color-tertiary-dark);
+}
+label[for='lightSwitchThree'] .switch_top {
+	background-color: var(--color-tertiary-dark);
+}
+label[for='lightSwitchThree'] .switch_top-outset {
+	background-color: var(--color-tertiary);
+	background-image: linear-gradient(90deg, var(--color-tertiary) 0%, #c1c3cd 100%);
+}
+label[for='lightSwitchThree'] .switch_bottom {
+	background-color: var(--color-tertiary);
+}
+label[for='lightSwitchThree'] .switch_bottom-outset {
+	background-color: var(--color-tertiary-dark);
+	background-image: linear-gradient(90deg, var(--color-tertiary-dark) 0%, #c1c3cd 100%);
+}
