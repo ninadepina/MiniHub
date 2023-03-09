@@ -13,17 +13,6 @@ value of the slider with [id="s1"]
 ten steps.
 ********************************** */
 
-// const ranges = document.querySelectorAll('input[type=range]');
-// const head = document.querySelector('head');
-
-// ranges.forEach((range) => {
-// 	range.addEventListener('input', () => {
-// 		range.setAttribute('data-value', range.value);
-// 		if (head) head.setAttribute(`data-value-${range.id}`, range.value);
-// 	});
-// 	range.dispatchEvent(new Event('input'));
-// });
-
 var ranges = document.querySelectorAll('[type=range]');
 var head = document.querySelector('head');
 
