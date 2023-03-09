@@ -18,7 +18,7 @@ You can view this project by clicking [here](https://ninadepina-cssttr.vercel.ap
 
 If you want to use this project locally, you can clone this repository by running the following command in your terminal:
 ```
-$ git clone https://github.com/ninadepina/css-to-the-rescue-2223.git
+$ git clone https://github.com/ninadepina/MiniHub.git
 ```
 and opening the `index.html` file in your browser or using localhost
 ```
