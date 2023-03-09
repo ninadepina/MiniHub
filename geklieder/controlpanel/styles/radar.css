@@ -1,0 +1,162 @@
+[data-name='radar'] {
+	position: relative;
+	width: fit-content;
+	height: fit-content;
+	margin: auto;
+	padding: 1em;
+	background-color: var(--color-interface-medium);
+}
+
+[data-name='radar'] > div {
+	width: 220px;
+	aspect-ratio: 1;
+	box-sizing: content-box;
+	border: 40px solid var(--color-interface-dark);
+	margin-bottom: 1em;
+
+	background-color: var(--color-interface-dark);
+
+	background-image:
+		/* mask */ radial-gradient(
+			closest-side,
+			transparent 100%,
+			var(--color-interface-dark) calc(100% + 0.5px)
+		),
+		/* woosh */ conic-gradient(from var(--radar-angle, 0deg), transparent, hsl(15 83% var(--l)) 119.8deg, transparent 120.2deg),
+		/* vertical line */ linear-gradient(to bottom, transparent calc(50% - 1px), hsl(15 83% var(--l)), transparent calc(50% + 1px)),
+		/* horizontal line */ linear-gradient(to right, transparent calc(50% - 1px), hsl(15 83% var(--l)), transparent calc(50% + 1px)),
+		/* circles */
+			repeating-radial-gradient(
+				closest-side,
+				hsl(15 83% var(--l)) 0 0.4px,
+				transparent 0.6px calc(20% - 0.6px),
+				hsl(15 83% var(--l)) calc(20% - 0.4px) 20%
+			);
+
+	animation: radar 3s infinite linear;
+	animation-delay: 0.6s;
+	animation-play-state: paused;
+}
+label:has(input[name='onOffButton']:checked) + [data-name='radar'] div {
+	animation-play-state: running;
+}
+
+@keyframes radar {
+	100% {
+		--radar-angle: 360deg;
+	}
+}
+
+/* zodat de browser weet hoe --radar-angle te animeren */
+/* werkt in chrome - wel onderdeel va interop 2023 */
+@property --radar-angle {
+	syntax: '<angle>';
+	inherits: true;
+	initial-value: 0deg;
+}
+
+[data-name='radar'] > div > div {
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	background: hsl(15 83% var(--l));
+	border-radius: 100%;
+	box-shadow: 0 0 5px 2px hsl(15 83% var(--l));
+	opacity: 0;
+	animation-duration: 3s;
+	animation-fill-mode: none;
+	animation-iteration-count: infinite;
+	animation-name: blip1;
+	animation-play-state: paused;
+}
+[data-name='radar'] > div > div:nth-of-type(1) {
+	top: 20%;
+	left: 65%;
+	animation-delay: 2.9s;
+}
+[data-name='radar'] > div > div:nth-of-type(2) {
+	top: 60%;
+	left: 30%;
+	animation-delay: 1.6s;
+}
+[data-name='radar'] > div > div:nth-of-type(3) {
+	top: 65%;
+	left: 70%;
+	animation-delay: 0.8s;
+}
+[data-name='radar'] > div > div:nth-of-type(4) {
+	top: 60%;
+	left: 50%;
+	animation-delay: 1.15s;
+}
+[data-name='radar'] > div > div:nth-of-type(5) {
+	top: 30%;
+	left: 35%;
+	animation-delay: 2.4s;
+}
+
+@keyframes blip1 {
+	0% {
+		opacity: 0;
+	}
+	1% {
+		opacity: 1;
+	}
+	85% {
+		opacity: 0;
+	}
+}
+
+[data-name='radar'] section {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	padding: 0.4em 0.8em 0.4em 0;
+	color: #fff;
+	background-color: var(--color-interface-dark);
+	font-size: 0.8em;
+	text-transform: uppercase;
+
+}
+[data-name='radar'] span {
+	width: 2em;
+}
+
+[data-name='radar'] span::before,
+[data-name='radar'] span::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: .66em;
+	transform: translateY(-50%);
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 1px solid #333;
+	background: #181818;
+}
+
+[data-name='radar'] p::after {
+	content: 'offline';
+}
+label:has(input[name='onOffButton']:checked) + [data-name='radar'] p::after {
+	content: 'scanning';
+}
+
+label:has(input[name='onOffButton']:checked) + [data-name='radar'] span::after {
+	background: radial-gradient(hsl(15 83% var(--l)) 60%, hsl(15 83% var(--l)) 40%);
+	animation: light 1s infinite alternate cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	border-color: transparent;
+	box-shadow: 0 0 5px 1px hsl(15 83% var(--l));
+}
+
+@keyframes light {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,74 @@
+@import url('./radar.css');
+@import url('./onOffButton.css');
+@import url('./lightswitch.css');
+@import url('./slider.css');
+@import url('./scan.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-interface-light: #70809d;
+	--color-interface-medium: #475265;
+	--color-interface-dark: #222630;
+
+	--color-primary: #eb5d2d;
+	--color-primary-dark: #d05329;
+	--color-secondary: #20b6b4;
+	--color-secondary-dark: #1b9c9a;
+	--color-tertiary: #e1e3ef;
+	--color-tertiary-dark: #d2d4df;
+	--font: 'Space Mono', monospace;
+
+}
+
+body {
+	height: 100vh;
+	background-color: var(--color-interface-dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: var(--font);
+	overflow: hidden;
+}
+main {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	position: relative;
+	width: 80%;
+	height: 70vh;
+	background-color: var(--color-interface-light);
+}
+
+input[type='checkbox'] {
+	position: absolute;
+	visibility: hidden;
+}
+
+[data-name='radar'] {
+	grid-row-start: 1;
+	grid-row-end: -1;
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
+form:has(input[type='range']) {
+    grid-row-start: 2;
+}
+
+[data-name='scan'] {
+	grid-row-start: 1;
+	grid-row-end: -1;
+	grid-column-start: 3;
+	grid-column-end: -1;
+}
