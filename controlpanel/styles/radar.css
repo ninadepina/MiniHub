@@ -1,5 +1,8 @@
 [data-name='pc']:has(input:checked) [data-name='radar'] {
 	visibility: visible;
+	transform: scaleX(-1) scale(1);
+	transition: 0.4s;
+	transition-delay: 0.4s;
 }
 [data-name='radar'] {
 	visibility: hidden;
@@ -7,7 +10,7 @@
 	top: 21%;
 	left: 20%;
 	border-radius: 50%;
-	transform: scaleX(-1);
+	transform: scaleX(-1) scale(0);
 }
 
 [data-name='radar'] > div {
