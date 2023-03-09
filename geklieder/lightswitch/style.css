@@ -19,6 +19,7 @@
 	--color-tertiary-dark: #d2d4df;
 }
 
+
 body {
 	height: 100vh;
 	display: flex;
@@ -26,7 +27,7 @@ body {
 	align-items: center;
 	background-color: white;
 }
-body:has(label[for='lightSwitchOne'] input[type='checkbox']:checked) {
+body:has(label[for='lightSwitchOne'] input:checked) {
 	background-color: #eb5d2d;
 }
 body:has(label[for='lightSwitchTwo'] input[type='checkbox']:checked) {
@@ -55,7 +56,7 @@ label {
 	display: flex;
 	height: 100%;
 	justify-content: center;
-	transform: scale3d(0.5, 0.5, 0.5);
+	transform: scale3d(0.5, 0.5, 0.5) scale(1, -1);
 }
 input {
 	position: absolute;
