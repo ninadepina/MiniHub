@@ -2,11 +2,16 @@
 
 # 👋🏼 'MiniHub'
 'MiniHub' is a HTML/CSS only project that let's you interact with a mini computer using a controlpanel.
+![controlpanel thumbnail](https://user-images.githubusercontent.com/89778503/224073532-0e051f45-31ff-4550-8c6e-60e510c5512a.png)
+
+---
 
 ## 🛠️ Technologies used
 - HTML5
 - CSS3
 - JavaScript (tiniest script ever🥺)
+
+---
 
 ## 👩🏼‍💻 How to use
 You can view this project by clicking [here](https://ninadepina-cssttr.vercel.app)(using Googe Chrome).
@@ -19,3 +24,8 @@ and opening the `index.html` file in your browser or using localhost
 ```
 http://localhost:5500
 ```
+
+---
+
+## 📄 Process
+For my process, check my [wiki](https://github.com/ninadepina/css-to-the-rescue-2223/wiki)!
