@@ -1,0 +1,49 @@
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-interface-light: #70809d;
+	--color-interface-dark: #222630;
+
+	--color-primary: #eb5d2d;
+	--color-primary-dark: #d05329;
+	--color-secondary: #20b6b4;
+	--color-secondary-dark: #1b9c9a;
+	--color-tertiary: #e1e3ef;
+	--color-tertiary-dark: #d2d4df;
+}
+
+[data-name="radar"], [data-name="radar"] > div { 
+    position: absolute; 
+}
+[data-name="radar"] {
+  overflow: hidden; 
+  top: 50%; left: 50%;
+  margin: -117px;
+  width: 248px; height: 248px;
+  border: 6px solid red;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5),
+    inset 0 0 0 1px hsla(0, 0%, 100%, 0.15);
+  background: 
+    linear-gradient(transparent 49.75%, #eee 49.75%, #eee 50.25%, transparent 50.25%) 50% no-repeat,
+    linear-gradient(90deg, transparent 49.75%, #eee 49.75%, #eee 50.25%, transparent 50.25%) 50% no-repeat,
+    linear-gradient(#333, #111);
+}
+[data-name="radar"] > div {
+  box-sizing: border-box;
+  top: 2px; left: 2px;
+  border-right: solid 1px hsla(0, 0%, 85%, 0.3);
+  width: 122px; height: 122px;
+  border-radius: 100% 0 0 0;
+  transform-origin: 100% 100%;
+  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, #eee);
+  animation: sweep 5s infinite linear;
+}
+@keyframes sweep { to { transform: rotate(360deg); } }
