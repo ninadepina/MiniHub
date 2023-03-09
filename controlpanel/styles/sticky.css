@@ -1,0 +1,79 @@
+label:has([data-name^='sticky']) {
+	position: absolute;
+	user-select: none;
+	z-index: 999;
+	cursor: pointer;
+}
+label:has([data-name='stickyOne']) {
+	top: 23em;
+	left: 16em;
+	transform: scale(0.2) rotateX(-10deg) rotateY(28deg) rotateZ(-3deg);
+}
+label:has([data-name='stickyTwo']) {
+	top: 11em;
+	left: 26em;
+	transform: scale(0.2) rotateX(-10deg) rotateY(28deg) rotateZ(4deg);
+}
+label:has(input:checked + [data-name^='sticky']) {
+	transform: scale(1);
+}
+
+[data-name^='sticky'] {
+	position: relative;
+	width: 270px;
+}
+
+[data-name^='sticky'] > div {
+	position: relative;
+	display: flex;
+	width: 100%;
+	padding-top: 92.5925926%;
+}
+
+[data-name^='sticky'] > div > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+/* Shadow behind the stickyOne note */
+[data-name^='sticky'] > div > div::before {
+	content: '';
+	position: absolute;
+	top: 28%;
+	left: 7px;
+	width: 90%;
+	height: 75%;
+	background-color: rgba(0, 0, 0, 0.25);
+	box-shadow: -2px 2px 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* The sticky note itself */
+[data-name^='sticky'] > div > div > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	font-family: 'Space Mono', monospace;
+	font-size: 1.5em;
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 182, 1) 12%,
+		rgba(255, 255, 182, 1) 24%,
+		rgba(255, 255, 153, 1) 75%,
+		rgba(255, 255, 179, 1) 100%
+	);
+	clip-path: url(#stickyOneClip);
+}
+
+[data-name^='sticky'] svg {
+	width: 0;
+	height: 0;
+}
+[data-name^='sticky'] svg path {
+	stroke-linecap: square;
+	stroke-linejoin: round;
+}

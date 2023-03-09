@@ -1,0 +1,83 @@
+label:has(input[name='onOffButton']) {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	background: radial-gradient(
+		circle at center,
+		var(--color-interface-dark) 0%,
+		var(--color-interface-dark) 40%,
+		var(--color-interface-medium) 40%,
+		var(--color-interface-medium) 100%
+	);
+}
+label:has(input[name='onOffButton']) > div {
+	position: absolute;
+	top: 90px;
+	left: 30px;
+	width: 70px;
+	height: 10px;
+	background: var(--color-tertiary);
+	border: 5px solid var(--color-interface-dark);
+	transform: rotate(0deg);
+	transform-origin: 70px center;
+	animation: bouncyTurnOff 0.6s linear;
+}
+label:has(input[name='onOffButton']) > p {
+	position: absolute;
+	color: #fff;
+	background-color: var(--color-interface-dark);
+	text-transform: uppercase;
+}
+label:has(input[name='onOffButton']) > p:first-of-type {
+	top: 50%;
+	left: -1em;
+	transform: translateY(-50%) rotate(-180deg);
+	writing-mode: vertical-lr;
+	padding: 0.4em 0.2em;
+}
+label:has(input[name='onOffButton']) > p:last-of-type {
+	top: -1em;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0.2em 0.4em;
+}
+
+[data-name='controls'] label:has(input[name='onOffButton']) {
+	cursor: not-allowed;
+}
+body:has([data-name='pc'] input:checked) [data-name='controls'] label:has(input[name='onOffButton']) {
+	cursor: pointer;
+}
+body:has([data-name='pc'] input:checked)
+	[data-name='controls']
+	label:has(input[name='onOffButton'])
+	input:checked
+	+ div {
+	transform: rotate(90deg);
+	animation: bouncyTurnOn 0.6s linear;
+}
+
+@keyframes bouncyTurnOn {
+	0% {
+		transform: rotate(0deg);
+	}
+	94% {
+		transform: rotate(93deg);
+	}
+	100% {
+		transform: rotate(90deg);
+	}
+}
+@keyframes bouncyTurnOff {
+	0% {
+		transform: rotate(90deg);
+	}
+	94% {
+		transform: rotate(-3deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}

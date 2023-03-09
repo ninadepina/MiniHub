@@ -1,0 +1,240 @@
+[data-name='scan'] {
+	--print-color: var(--color-interface-dark);
+}
+[data-name='scan'] > section {
+	display: flex;
+	justify-content: space-between;
+}
+[data-name='scan'] section > label:first-of-type {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: auto 0 1.2em 0;
+	padding: 1em;
+	background-color: var(--color-interface-medium);
+	background-image: url(../images/power-grey.png);
+	background-repeat: no-repeat;
+	background-size: 40%;
+	background-position: center;
+	box-shadow: inset 0 10px 4px -10.5px rgb(255 255 255 / 40%), 0 4px 8px 0 rgb(0 0 0 / 26%);
+	transition: 0.4s;
+	cursor: pointer;
+}
+[data-name='scan'] section > label:first-of-type:has(input:checked) {
+	background-image: url(../images/power.png);
+	box-shadow: inset 0 8px 7px -10.5px transparent, 0 0px 6.5px 0 rgb(0 0 0 / 20%), inset 0 0 7px 6px rgb(0 0 0 / 20%);
+	transition: 0.4s;
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div {
+	display: inline-block;
+	padding: 15px;
+	background-color: var(--color-interface-light);
+	border-radius: 2px;
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div {
+	position: relative;
+	width: 10px;
+	height: 50px;
+	background-color: var(--color-interface-medium);
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:last-of-type {
+	position: absolute;
+	left: -5px;
+	width: 20px;
+	height: 20px;
+	transition: transform 0.5s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+/* lever handle */
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:last-of-type div:last-of-type {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	background-color: var(--color-handle);
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+	border: 0;
+	border-radius: 50%;
+	outline: 0;
+	transition: box-shadow 0.3s linear;
+	cursor: pointer;
+}
+[data-name='scan'] section > label:nth-of-type(2) > div > div > div:last-of-type div:last-of-type {
+	--color-handle: var(--color-primary);
+}
+[data-name='scan'] section > label:nth-of-type(3) > div > div > div:last-of-type div:last-of-type {
+	--color-handle: var(--color-secondary);
+}
+[data-name='scan'] section > label:nth-of-type(4) > div > div > div:last-of-type div:last-of-type {
+	--color-handle: var(--color-tertiary);
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:last-of-type div:last-of-type:hover {
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:last-of-type div:first-of-type {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: var(--color-handle);
+	border-radius: 50%;
+	opacity: 0.3;
+	transform: scale(1);
+	transition: all 0.5s ease-in-out;
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:first-of-type {
+	position: absolute;
+	left: 2px;
+	height: 20px;
+	width: 6px;
+	background: #a0a0a0;
+	border-radius: 3px;
+	transition: transform 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+	transition-delay: 0.2s;
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:first-of-type {
+	transform: translateY(10px);
+}
+
+[data-name='scan'] section > label:not(:first-of-type) > div > div > div:last-of-type {
+	transform: translateY(0);
+}
+
+[data-name='scan'] section > label:not(:first-of-type):has(input:checked) > div > div > div:first-of-type {
+	transform: translateY(20px);
+}
+
+[data-name='scan'] section > label:not(:first-of-type):has(input:checked) > div > div > div:last-of-type {
+	transform: translateY(30px);
+}
+
+[data-name='scan'] > div {
+	position: relative;
+	width: 200px;
+	height: 100px;
+	box-sizing: content-box;
+	border: 16px solid var(--color-interface-medium);
+	background-color: var(--color-interface-medium);
+}
+[data-name='scan'] > div > div:not(:first-child) {
+	width: 100%;
+	height: 100px;
+}
+[data-name='scan'] > div > div:nth-child(2) {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	animation: fingerprint 4s ease-in-out infinite;
+	animation-play-state: paused;
+}
+[data-name='scan'] section:has(label:first-of-type input:checked) + div > div:nth-child(2) {
+	animation-play-state: running;
+}
+
+[data-name='scan'] > div > div:nth-child(2) svg {
+	width: 50%;
+	margin: 0 25%;
+	aspect-ratio: 1 / 1;
+	fill: var(--print-color);
+	transition: 0.3s;
+}
+
+[data-name='scan'] section:has(label input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label input:checked) + div > div:first-child {
+	transition: 0.3s;
+	transition-delay: 0.4s;
+}
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked) + div > div:first-child {
+	--print-color: var(--color-primary);
+	transition: 0.3s;
+	transition-delay: 0.4s;
+}
+[data-name='scan'] section:has(label:nth-of-type(3) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(3) input:checked) + div > div:first-child {
+	--print-color: var(--color-secondary);
+}
+[data-name='scan'] section:has(label:nth-of-type(4) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(4) input:checked) + div > div:first-child {
+	--print-color: var(--color-tertiary);
+}
+/* prettier-ignore */
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked):has(label:nth-of-type(3) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked):has(label:nth-of-type(3) input:checked) + div > div:first-child {
+	--print-color: #868a71;
+}
+/* prettier-ignore */
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked):has(label:nth-of-type(4) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked):has(label:nth-of-type(4) input:checked) + div > div:first-child {
+	--print-color: #df9986;
+}
+/* prettier-ignore */
+[data-name='scan'] section:has(label:nth-of-type(3) input:checked):has(label:nth-of-type(4) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(3) input:checked):has(label:nth-of-type(4) input:checked) + div > div:first-child {
+	--print-color: #79c5ca;
+}
+/* prettier-ignore */
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked):has(label:nth-of-type(3) input:checked):has(label:nth-of-type(4) input:checked) + div > div:nth-child(2) svg,
+[data-name='scan'] section:has(label:nth-of-type(2) input:checked):has(label:nth-of-type(3) input:checked):has(label:nth-of-type(4) input:checked) + div > div:first-child {
+	--print-color: #9fa295;
+}
+
+[data-name='scan'] > div > div:nth-child(3) {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+[data-name='scan'] > div > div:nth-child(3) svg {
+	width: 100%;
+	height: 100%;
+	fill: var(--color-interface-light);
+}
+@keyframes fingerprint {
+	0%,
+	100% {
+		width: 100%;
+		height: 0;
+	}
+	50% {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/* line */
+[data-name='scan'] > div > div:first-child {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 52%;
+	height: 3px;
+	margin: 0 22%;
+	background: var(--print-color);
+	border-radius: 3px;
+	box-shadow: 0 0 20px var(--print-color), 0 0 20px var(--print-color);
+	z-index: 2;
+	animation: line 4s ease-in-out infinite;
+	animation-play-state: paused;
+}
+[data-name='scan'] section:has(label:first-of-type input:checked) + div > div:first-child {
+	animation-play-state: running;
+}
+@keyframes line {
+	0%,
+	100% {
+		top: 0;
+	}
+	50% {
+		top: 100%;
+	}
+}
