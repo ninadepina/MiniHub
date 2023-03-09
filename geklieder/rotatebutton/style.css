@@ -1,0 +1,85 @@
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-interface-light: #70809d;
+	--color-interface-dark: #222630;
+
+	--color-primary: #eb5d2d;
+	--color-primary-dark: #d05329;
+	--color-secondary: #20b6b4;
+	--color-secondary-dark: #1b9c9a;
+	--color-tertiary: #e1e3ef;
+	--color-tertiary-dark: #d2d4df;
+}
+
+label {
+    position: relative;
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at center, var(--color-interface-dark) 0%, var(--color-interface-dark) 40%, var(--color-interface-light) 40%, var(--color-interface-light) 100%);
+    cursor: pointer;
+}
+label > div {
+    position: absolute;
+    top: 90px;
+    left: 30px;
+    transform: rotate(0deg);
+    transform-origin: 70px center;
+    width: 70px;
+    height: 10px;
+    background: var(--color-tertiary);
+    border: 5px solid var(--color-interface-dark);
+    animation: bouncyTurnOff .6s linear;
+}
+label > p:first-of-type {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(-180deg);
+    writing-mode: vertical-lr;
+}
+label > p:last-of-type {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+input[type=checkbox] {
+    position: absolute;
+    visibility: hidden;
+}
+input[type=checkbox]:checked + div {
+    transform: rotate(90deg);
+    animation: bouncyTurnOn .6s linear;
+}
+
+@keyframes bouncyTurnOn {
+    0% {
+        transform: rotate(0deg);
+    }
+    94% {
+        transform: rotate(92deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+@keyframes bouncyTurnOff {
+    0% {
+        transform: rotate(90deg);
+    }
+    94% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
